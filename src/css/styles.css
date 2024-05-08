@@ -128,14 +128,6 @@
     margin-bottom: 30px;
 }
 
-.img-container {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 24px;
-    display: flex;
-    
-}
-
 .search-input {
  border-radius: 4px;
 width: 272px;
@@ -151,7 +143,7 @@ background: #4e75ff;
 border: none;
 }
 
-.photo-list {
+/* .photo-list {
  width: calc((100% - 48px) / 3);
 }
 
@@ -180,4 +172,4 @@ border: none;
   display: flex;
   flex-direction: column;
 }
-
+ */

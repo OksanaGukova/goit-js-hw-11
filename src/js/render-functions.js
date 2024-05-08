@@ -1,4 +1,4 @@
-import {imgContainer} from '../main.js'
+import { imgContainer } from '../main.js';
 
 export function createMarkup({
   tags,
@@ -32,8 +32,5 @@ export function createMarkup({
       </div>
     </div>`;
 
-    imgContainer.innerHTML = markup;
-  
+  imgContainer.innerHTML += markup;
 }
-
-

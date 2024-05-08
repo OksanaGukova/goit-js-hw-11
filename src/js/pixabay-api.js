@@ -1,5 +1,5 @@
 import { createMarkup } from './render-functions.js';
-import { onFetchError, clearGallery } from '../main.js';
+import { onFetchError, clearGallery, searchForm } from '../main.js';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 import iziToast from 'izitoast';
@@ -19,7 +19,8 @@ export function searchImages(query) {
     .then(data => {
       if (data.hits.length === 0) {
         iziToast.error({
-          message: 'Sorry, there are no images matching your search query. Please try again!',
+          message:
+            'Sorry, there are no images matching your search query. Please try again!',
         });
       } else {
         displayImages(data.hits);
@@ -28,11 +29,10 @@ export function searchImages(query) {
     .catch(onFetchError)
     .finally(() => {
       searchForm.reset();
-      
     });
 }
 
- function displayImages(images) {
+function displayImages(images) {
   clearGallery();
   images.forEach(image => {
     createMarkup(image);
@@ -40,4 +40,3 @@ export function searchImages(query) {
     lightbox.refresh();
   });
 }
-

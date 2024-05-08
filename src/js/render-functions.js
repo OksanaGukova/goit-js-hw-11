@@ -11,26 +11,32 @@ export function createMarkup({
 }) {
   const markup = `
     <div class="photo-list">
-      <a href='${largeImageURL}' class="list">
+      <a href='${largeImageURL}' class="list"> 
+      <div class ="photo-card">
         <img class="photo" src="${webformatURL}" alt="${tags}" loading="lazy" />
-      </a>
       <div class="info">
-        <ul>
+        <ul class="info-list" >
           <li class="info-item">
-            <p>Likes: ${likes}</p>
+            <p>Likes:</p>
+            <p>${likes}</p>
           </li>
           <li class="info-item">
-            <p>Views: ${views}</p>
+            <p>Views:</p>
+            <p>${views}</p>
           </li>
           <li class="info-item">
-            <p>Comments: ${comments}</p>
+            <p>Comments:</p>
+            <p>${comments}</p> 
           </li>
           <li class="info-item">
-            <p><b>Downloads:</b> ${downloads}</p>
+            <p>Downloads:</p>
+            <p>${downloads}</p>
           </li>
         </ul>
+         </div>
       </div>
-    </div>`;
+    </div> 
+     </a> `;
 
-  imgContainer.innerHTML += markup;
+  imgContainer.insertAdjacentHTML('beforeend', markup);
 }

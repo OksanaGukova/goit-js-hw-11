@@ -143,8 +143,18 @@ background: #4e75ff;
 border: none;
 }
 
-/* .photo-list {
- width: calc((100% - 48px) / 3);
+
+  .gallery {
+  display: flex;
+  gap: 24px;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+
+/*  .card-link {
+
 }
 
 .photo {
@@ -152,6 +162,13 @@ border: none;
     height: 100%;
     object-fit: cover;
     display: block;
+}
+
+.photo-card {
+  display: block;
+   width: 200px;
+ height: 200px;
+
 }
 
 .info {
@@ -172,4 +189,5 @@ border: none;
   display: flex;
   flex-direction: column;
 }
- */
+  */
+ 

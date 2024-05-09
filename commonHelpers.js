@@ -1,30 +1,25 @@
-import{S as f,i as c}from"./assets/vendor-0fc460d7.js";(function(){const o=document.createElement("link").relList;if(o&&o.supports&&o.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))a(e);new MutationObserver(e=>{for(const r of e)if(r.type==="childList")for(const i of r.addedNodes)i.tagName==="LINK"&&i.rel==="modulepreload"&&a(i)}).observe(document,{childList:!0,subtree:!0});function t(e){const r={};return e.integrity&&(r.integrity=e.integrity),e.referrerPolicy&&(r.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?r.credentials="include":e.crossOrigin==="anonymous"?r.credentials="omit":r.credentials="same-origin",r}function a(e){if(e.ep)return;e.ep=!0;const r=t(e);fetch(e.href,r)}})();const m=s=>s.reduce((o,{tags:t,webformatURL:a,largeImageURL:e,likes:r,views:i,comments:u,downloads:d})=>o+`
-      <a href='${e}' class="card-link js-card-link">
-        <div class="photo-card">
-          <img class="photo" src="${a}" alt="${t}" loading="lazy"</a> />
-          <div class="info">
-            <div class="info-item info-item-likes">
-              <button type="button" class="circle">
-                <i class="bi bi-heart-fill"></i>
-              </button>
-              <div class="box-likes"><b>Likes</b>
-                <span id="value">${r}</span>
-              </div>
-            </div>
-            <p class="info-item">
-              <b>Views</b>
-              ${i}
-            </p>
-            <p class="info-item">
-              <b>Comments</b>
-              ${u}
-            </p>
-            <p class="info-item">
-              <b>Downloads</b>
-              ${d}
-            </p>
-          </div>
+import{S as f,i as c}from"./assets/vendor-0fc460d7.js";(function(){const t=document.createElement("link").relList;if(t&&t.supports&&t.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))n(e);new MutationObserver(e=>{for(const r of e)if(r.type==="childList")for(const o of r.addedNodes)o.tagName==="LINK"&&o.rel==="modulepreload"&&n(o)}).observe(document,{childList:!0,subtree:!0});function s(e){const r={};return e.integrity&&(r.integrity=e.integrity),e.referrerPolicy&&(r.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?r.credentials="include":e.crossOrigin==="anonymous"?r.credentials="omit":r.credentials="same-origin",r}function n(e){if(e.ep)return;e.ep=!0;const r=s(e);fetch(e.href,r)}})();const h=a=>a.reduce((t,{tags:s,webformatURL:n,largeImageURL:e,likes:r,views:o,comments:d,downloads:u})=>t+`<li class="photo-container">
+    <a href='${e}' class="card-link js-card-link">
+        <img class="photo" src="${n}" alt="${s}" loading="lazy" />
+    </a>
+    <div class="info">
+        <div class="info-item">
+            <span class="title">Likes</span>
+            <span class="info">${r}</span>
         </div>
-      
-    `,""),h="43705346-f08330685c72fc18a8a8b3aad",p="https://pixabay.com/api/",y=s=>{const o=new URLSearchParams({key:h,q:s,image_type:"photo",orientation:"horizontal",safesearch:"true"});return fetch(`${p}/?${o}`).then(t=>{if(!t.ok)throw new Error("Sorry, there are no images matching your search query. Please try again!");return t.json()})},n=document.querySelector(".gallery"),g=document.querySelector(".search-form"),l=document.querySelector(".loader");function b(s){s.preventDefault();const o=s.target.elements.searchKeyword.value.trim();if(n.innerHTML="",o==="")return c.error({message:"Sorry, there are no images matching your search query. Please try again!"});n.innerHTML="",l.classList.remove("is-hidden"),y(o).then(t=>{t.hits.length===0&&c.error({message:"Sorry, there are no images matching your search query. Please try again!"}),n.innerHTML=m(t.hits)}).catch(t=>console.log(t)).finally(()=>{s.target.reset(),l.classList.add("is-hidden")})}g.addEventListener("submit",b);new f(".gallery a",{captionsData:"alt",captionsPosition:"bottom",captionsDelay:250});
+        <div class="info-item">
+            <span class="title">Views</span>
+            <span class="info">${o}</span>
+        </div>
+        <div class="info-item">
+            <span class="title">Comments</span>
+            <span class="info">${d}</span>
+        </div>
+        <div class="info-item">
+            <span class="title">Downloads</span>
+            <span class="info">${u}</span>
+        </div>
+    </div>
+</li>
+    `,""),m="43705346-f08330685c72fc18a8a8b3aad",p="https://pixabay.com/api/",y=a=>{const t=new URLSearchParams({key:m,q:a,image_type:"photo",orientation:"horizontal",safesearch:"true"});return fetch(`${p}/?${t}`).then(s=>{if(!s.ok)throw new Error("Sorry, there are no images matching your search query. Please try again!");return s.json()})},i=document.querySelector(".gallery"),g=document.querySelector(".search-form"),l=document.querySelector(".loader");function L(a){a.preventDefault();const t=a.target.elements.searchKeyword.value.trim();if(i.innerHTML="",t==="")return c.error({message:"Sorry, there are no images matching your search query. Please try again!"});i.innerHTML="",l.classList.remove("is-hidden"),y(t).then(s=>{s.hits.length===0&&c.error({message:"Sorry, there are no images matching your search query. Please try again!"}),i.innerHTML=h(s.hits)}).catch(s=>console.log(s)).finally(()=>{a.target.reset(),l.classList.add("is-hidden")})}g.addEventListener("submit",L);const v=new f(".gallery a");v.refresh();
 //# sourceMappingURL=commonHelpers.js.map

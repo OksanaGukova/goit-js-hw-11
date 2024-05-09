@@ -1,19 +1,15 @@
 
 export const createMarkup = images => {
-  return images.reduce((html, {
-    tags,
-    webformatURL,
-    largeImageURL,
-    likes,
-    views,
-    comments,
-    downloads,
-  }) => {
-    return (
-      html +
-      `<li class="photo-container">
-    <a href='${largeImageURL}' class="card-link js-card-link">
-        <img class="photo" src="${webformatURL}" alt="${tags}" loading="lazy" />
+  return images.reduce(
+    (
+      html,
+      { tags, webformatURL, largeImageURL, likes, views, comments, downloads }
+    ) => {
+      return (
+        html +
+        `<li class="photo-container">
+    <a href=${largeImageURL} class="card-link js-card-link">
+        <img class="photo" src=${webformatURL} alt=${tags} >
     </a>
     <div class="info">
         <div class="info-item">
@@ -35,6 +31,10 @@ export const createMarkup = images => {
     </div>
 </li>
     `
-    );
-  }, '');
+      );
+    },
+    ''
+  );
 };
+
+

@@ -47,3 +47,4 @@ const lightbox = new SimpleLightbox('.gallery a', {
   captionsDelay: 250,
 });
 lightbox.refresh();
+

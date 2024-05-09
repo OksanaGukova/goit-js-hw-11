@@ -11,34 +11,29 @@ export const createMarkup = images => {
   }) => {
     return (
       html +
-      `
-      <a href='${largeImageURL}' class="card-link js-card-link">
-        <div class="photo-card">
-          <img class="photo" src="${webformatURL}" alt="${tags}" loading="lazy"</a> />
-          <div class="info">
-            <div class="info-item info-item-likes">
-              <button type="button" class="circle">
-                <i class="bi bi-heart-fill"></i>
-              </button>
-              <div class="box-likes"><b>Likes</b>
-                <span id="value">${likes}</span>
-              </div>
-            </div>
-            <p class="info-item">
-              <b>Views</b>
-              ${views}
-            </p>
-            <p class="info-item">
-              <b>Comments</b>
-              ${comments}
-            </p>
-            <p class="info-item">
-              <b>Downloads</b>
-              ${downloads}
-            </p>
-          </div>
+      `<li class="photo-container">
+    <a href='${largeImageURL}' class="card-link js-card-link">
+        <img class="photo" src="${webformatURL}" alt="${tags}" loading="lazy" />
+    </a>
+    <div class="info">
+        <div class="info-item">
+            <span class="title">Likes</span>
+            <span class="info">${likes}</span>
         </div>
-      
+        <div class="info-item">
+            <span class="title">Views</span>
+            <span class="info">${views}</span>
+        </div>
+        <div class="info-item">
+            <span class="title">Comments</span>
+            <span class="info">${comments}</span>
+        </div>
+        <div class="info-item">
+            <span class="title">Downloads</span>
+            <span class="info">${downloads}</span>
+        </div>
+    </div>
+</li>
     `
     );
   }, '');

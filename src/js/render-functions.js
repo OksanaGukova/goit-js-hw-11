@@ -1,42 +1,46 @@
-import { imgContainer } from '../main.js';
 
-export function createMarkup({
-  tags,
-  webformatURL,
-  largeImageURL,
-  likes,
-  views,
-  comments,
-  downloads,
-}) {
-  const markup = `
-    <div class="photo-list">
-      <a href='${largeImageURL}' class="list"> 
-      <div class ="photo-card">
-        <img class="photo" src="${webformatURL}" alt="${tags}" loading="lazy" />
-      <div class="info">
-        <ul class="info-list" >
-          <li class="info-item">
-            <p>Likes:</p>
-            <p>${likes}</p>
-          </li>
-          <li class="info-item">
-            <p>Views:</p>
-            <p>${views}</p>
-          </li>
-          <li class="info-item">
-            <p>Comments:</p>
-            <p>${comments}</p> 
-          </li>
-          <li class="info-item">
-            <p>Downloads:</p>
-            <p>${downloads}</p>
-          </li>
-        </ul>
-         </div>
-      </div>
-    </div> 
-     </a> `;
-
-  imgContainer.insertAdjacentHTML('beforeend', markup);
-}
+export const creatMarkup = images => {
+  return images
+   .map(
+      ({
+        tags,
+        webformatURL,
+        largeImageURL,
+        likes,
+        views,
+        comments,
+        downloads,
+      }) => {
+        return `
+            <a href='${largeImageURL}' class="card-link js-card-link">
+            <div class="photo-card">
+              <img class="photo" src="${webformatURL}" alt="${tags}" loading="lazy" />
+              <div class="info">
+                <div class="info-item info-item-likes">
+                  <button type="button" class="circle" onclick="style.boxShadow='inset -1px -1px 3px white, inset 1px 1px 3px rgba(0, 0, 0, 0.1)'">
+                    <i class="bi bi-heart-fill" onclick="style.color='#ff0000'"></i>
+                  </button>
+                  <div class="box-likes"><b>Likes</b>
+                  <span id="value">${likes}</span>
+                  </div>
+                  
+                </div>
+                <p class="info-item">
+                  <b>Views</b>
+                  ${views}
+                </p>
+                <p class="info-item">
+                  <b>Comments</b>
+                  ${comments}
+                </p>
+                <p class="info-item">
+                  <b>Downloads</b>
+                  ${downloads}
+                </p>
+              </div>
+            </div>
+            </a>`;
+      }
+    )
+    .join('');
+};

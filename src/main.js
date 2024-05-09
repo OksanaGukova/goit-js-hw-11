@@ -1,32 +1,47 @@
-import { searchImages } from './js/pixabay-api';
 
-export const imgContainer = document.querySelector('.img-container');
-export const searchForm = document.querySelector('.search-form');
-const loader = document.querySelector('.loader');
-const searchInput = document.querySelector('.search-input');
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
+import { creatMarkup } from './js/render-functions';
+import { fetchPhotos } from './js/pixabay-api';
 
-searchForm.addEventListener('submit', onSearch);
-
+const imgContainer = document.querySelector('.js-gallery');
+const searchForm = document.querySelector('.search-form');
+const loaderEl = document.querySelector('.loader');
 
 
 function onSearch(event) {
   event.preventDefault();
- loader.classList.remove('is-hidden');
-  const query = searchInput.value.trim();
-  if (query !== '') {
-    searchImages(query);
-     loader.classList.add('is-hidden');
+  const searchQuery = event.target.elements.searchKeyword.value.trim();
+
+  if (searchQuery === '') {
+    imgContainer.innerHTML = '';
+    event.target.reset();
+    iziToast.error({
+      message: 'Input field can not be empty',
+    });
+
     return;
   }
-   
-}
 
-
-export function onFetchError(error) {
-  alert(error);
-}
-
-export function clearGallery() {
   imgContainer.innerHTML = '';
+  loaderEl.classList.remove('is-hidden');
+
+  fetchPhotos(searchQuery)
+    .then(imagesData => {
+      if (imagesData.total === 0) {
+        iziToast.error({
+          message:
+            'Sorry, there are no images matching your search query. Please try again!',
+        });
+      }
+
+      imgContainer.innerHTML = creatMarkup(imagesData.results);
+    })
+    .catch(error => console.log(error))
+    .finally(() => {
+      event.target.reset();
+      loaderEl.classList.add('is-hidden');
+    });
 }
 
+searchForm.addEventListener('submit', onSearch);

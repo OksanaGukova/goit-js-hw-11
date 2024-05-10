@@ -9,7 +9,7 @@ export const createMarkup = images => {
         html +
         `<li class="photo-container">
     <a href=${largeImageURL} class="card-link js-card-link">
-        <img class="photo" src=${webformatURL} alt=${tags} >
+        <img class="photo" src="${webformatURL}" alt="${tags}" >
     </a>
     <div class="info">
         <div class="info-item">

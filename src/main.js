@@ -32,6 +32,11 @@ function onSearch(event) {
       }
 
       imgContainer.innerHTML = createMarkup(imagesData.hits);
+      const lightbox = new SimpleLightbox('.gallery a', {
+        captionsData: 'alt',
+        captionsDelay: 250,
+      });
+      lightbox.refresh();
     })
     .catch(error => console.log(error))
     .finally(() => {
@@ -42,9 +47,5 @@ function onSearch(event) {
 
 searchForm.addEventListener('submit', onSearch);
 
-const lightbox = new SimpleLightbox('.gallery a', {
-  captionsData: 'alt',
-  captionsDelay: 250,
-});
-lightbox.refresh();
+
 
